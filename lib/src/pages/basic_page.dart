@@ -9,18 +9,20 @@ class BasicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          
-          _createImageBanner(),
-          _createTitleSubContent(),
-          _createActionButtons(),
-          _createDescriptionText(),
-          _createDescriptionText(),
-          _createDescriptionText(),
-          _createDescriptionText()
+      body: SingleChildScrollView (
+        child: Column(
+          children: <Widget>[
+            
+            _createImageBanner(),
+            _createTitleSubContent(),
+            _createActionButtons(),
+            _createDescriptionText(),
+            _createDescriptionText(),
+            _createDescriptionText(),
+            _createDescriptionText()
 
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -33,29 +35,31 @@ class BasicPage extends StatelessWidget {
   }
 
   Widget _createTitleSubContent() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'Lago con montañas',
-                  style: titleStyle,
-                ),
-                SizedBox(height: 7.0),
-                Text(
-                  'Persona sentada en un puente',
-                  style: subTitleStyle,
-                )
-              ]
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Lago con montañas',
+                    style: titleStyle,
+                  ),
+                  SizedBox(height: 7.0),
+                  Text(
+                    'Persona sentada en un puente',
+                    style: subTitleStyle,
+                  )
+                ]
+              ),
             ),
-          ),
-          Icon(Icons.star, color: Colors.red, size: 27.0,),
-          Text('42', style: TextStyle(fontSize: 17.0),)
-        ]
+            Icon(Icons.star, color: Colors.red, size: 27.0,),
+            Text('42', style: TextStyle(fontSize: 17.0),)
+          ]
+        ),
       ),
     );
   }
@@ -81,12 +85,14 @@ class BasicPage extends StatelessWidget {
   }
 
   Widget _createDescriptionText() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
-      child: Text(
-        'Paint your app to life in milliseconds with Stateful Hot Reload. Use a rich set of fully-customizable widgets to build native interfaces in minutes.Quickly ship features with a focus on native end-user experiences. Layered architecture allows for full customization, which results in incredibly fast rendering and expressive and flexible designs.',
-        textAlign: TextAlign.justify,
-      )
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 40.0),
+        child: Text(
+          'Paint your app to life in milliseconds with Stateful Hot Reload. Use a rich set of fully-customizable widgets to build native interfaces in minutes.Quickly ship features with a focus on native end-user experiences. Layered architecture allows for full customization, which results in incredibly fast rendering and expressive and flexible designs.',
+          textAlign: TextAlign.justify,
+        )
+      ),
     );
   }
 }  
