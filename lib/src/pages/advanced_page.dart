@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'dart:ui';
 
 
 class AdvancedPage extends StatelessWidget {
@@ -88,33 +89,33 @@ class AdvancedPage extends StatelessWidget {
       children: <TableRow>[
         TableRow(
           children: <Widget> [
-            _createRoundedButton(),
-            _createRoundedButton()
+            _createRoundedButton(Colors.blue, Icons.border_all, 'General'),
+            _createRoundedButton(Colors.purpleAccent, Icons.directions_bus, 'Bus')
           ]
         ),
         TableRow(
           children: <Widget> [
-            _createRoundedButton(),
-            _createRoundedButton()
+            _createRoundedButton(Colors.pink, Icons.shop, 'Shop'),
+            _createRoundedButton(Colors.orange, Icons.shutter_speed, 'Speed')
           ]
         ),
         TableRow(
           children: <Widget> [
-            _createRoundedButton(),
-            _createRoundedButton()
+            _createRoundedButton(Colors.green, Icons.android, 'Android'),
+            _createRoundedButton(Colors.indigo, Icons.apps, 'Apps')
           ]
         ),
         TableRow(
           children: <Widget> [
-            _createRoundedButton(),
-            _createRoundedButton()
+            _createRoundedButton(Colors.lightBlue, Icons.archive, 'Archive'),
+            _createRoundedButton(Colors.redAccent, Icons.attach_money, 'Money')
           ]
         )
       ],
     );
   }
 
-  Widget _createRoundedButton() {
+  Widget _createRoundedButton(Color color, IconData icon, String text) {
     return Container(
       height: 180.0,
       margin: EdgeInsets.all(15.0),
@@ -122,18 +123,24 @@ class AdvancedPage extends StatelessWidget {
         color: Color.fromRGBO(62, 66, 107, 0.7),
         borderRadius: BorderRadius.circular(20.0)
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          //SizedBox(height: 5.0),
-          CircleAvatar(
-            backgroundColor: Colors.pinkAccent,
-            radius: 35.0,
-            child: Icon(Icons.swap_vertical_circle, color: Colors.white, size: 30.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20.0),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              //SizedBox(height: 5.0),
+              CircleAvatar(
+                backgroundColor: color,
+                radius: 35.0,
+                child: Icon(icon, color: Colors.white, size: 30.0),
+              ),
+              Text(text, style: TextStyle(color: color)),
+              //SizedBox(height: 5.0)
+            ],
           ),
-          Text('Hello', style: TextStyle(color: Colors.pinkAccent)),
-          //SizedBox(height: 5.0)
-        ],
+        ),
       ),
     );
   }
