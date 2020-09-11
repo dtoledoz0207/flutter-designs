@@ -12,7 +12,8 @@ class AdvancedPage extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                _titles()
+                _titles(),
+                _tableRoundedButtons()
               ],
             ),
           )
@@ -78,6 +79,61 @@ class AdvancedPage extends StatelessWidget {
             Text('Classify this transaction into a particular category', style: TextStyle(color: Colors.white, fontSize: 18.0))
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _tableRoundedButtons() {
+    return Table(
+      children: <TableRow>[
+        TableRow(
+          children: <Widget> [
+            _createRoundedButton(),
+            _createRoundedButton()
+          ]
+        ),
+        TableRow(
+          children: <Widget> [
+            _createRoundedButton(),
+            _createRoundedButton()
+          ]
+        ),
+        TableRow(
+          children: <Widget> [
+            _createRoundedButton(),
+            _createRoundedButton()
+          ]
+        ),
+        TableRow(
+          children: <Widget> [
+            _createRoundedButton(),
+            _createRoundedButton()
+          ]
+        )
+      ],
+    );
+  }
+
+  Widget _createRoundedButton() {
+    return Container(
+      height: 180.0,
+      margin: EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(62, 66, 107, 0.7),
+        borderRadius: BorderRadius.circular(20.0)
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          //SizedBox(height: 5.0),
+          CircleAvatar(
+            backgroundColor: Colors.pinkAccent,
+            radius: 35.0,
+            child: Icon(Icons.swap_vertical_circle, color: Colors.white, size: 30.0),
+          ),
+          Text('Hello', style: TextStyle(color: Colors.pinkAccent)),
+          //SizedBox(height: 5.0)
+        ],
       ),
     );
   }
